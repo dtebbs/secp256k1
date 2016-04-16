@@ -331,6 +331,7 @@ SECP256K1_API jlong JNICALL Java_org_bitcoin_NativeSecp256k1_secp256k1_1ecdsa_1p
   return 0;
 }
 
+#ifdef ENABLE_MODULE_SCHNORR
 SECP256K1_API jobjectArray JNICALL Java_org_bitcoin_NativeSecp256k1_secp256k1_1schnorr_1sign
   (JNIEnv* env, jclass classObject, jobject byteBufferObject, jlong ctx_l)
 {
@@ -363,7 +364,9 @@ SECP256K1_API jobjectArray JNICALL Java_org_bitcoin_NativeSecp256k1_secp256k1_1s
 
   return retArray;
 }
+#endif
 
+#ifdef ENABLE_MODULE_ECDH
 SECP256K1_API jobjectArray JNICALL Java_org_bitcoin_NativeSecp256k1_secp256k1_1ecdh
   (JNIEnv* env, jclass classObject, jobject byteBufferObject, jlong ctx_l, jint publen)
 {
@@ -407,3 +410,4 @@ SECP256K1_API jobjectArray JNICALL Java_org_bitcoin_NativeSecp256k1_secp256k1_1e
 
   return retArray;
 }
+#endif
